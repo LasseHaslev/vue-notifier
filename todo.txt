@@ -1,0 +1,2 @@
+[ ] Add font awesome icons
+[ ] Add multiple notification types 'modal' and 'normal' etc.
