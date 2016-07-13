@@ -2,6 +2,7 @@
   "name": "@lassehaslev/vue-notifier",
   "description": "Notification plugin for vue",
   "author": "Lasse S. Haslev <lasse@haslev.no>",
+  "main": "src/VueNotifier.js",
   "scripts": {
     "watchify": "watchify -vd -p browserify-hmr -e src/main.js -o dist/build.js",
     "serve": "http-server -c 1 -a localhost",

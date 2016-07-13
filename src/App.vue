@@ -24,12 +24,12 @@
 </template>
 
 <script>
-import Notifier from './VueNotifier.vue'
-import NotifyContainerMixin from './Mixins/ContainerMixin'
-import NotifierMixin from './Mixins/NotifierMixin'
+import Notifier from './VueNotifier'
+import { NotifierMixin, NotifierContainerMixin } from './VueNotifier'
+
 export default {
 
-    mixins: [ NotifyContainerMixin, NotifierMixin ],
+    mixins: [ NotifierContainerMixin, NotifierMixin ],
 
     data() {
         return {
