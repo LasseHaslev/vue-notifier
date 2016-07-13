@@ -33,6 +33,8 @@ export default {
             message: 'There is no response messages yet',
             type: 'success',
 
+            timer: null,
+
             defaultMessages: {
                 primary: 'Primary',
                 info: 'Info',
@@ -42,15 +44,6 @@ export default {
             }
 
         }
-
-    },
-
-    ready: function() {
-        var self = this;
-        // self.showResponse();
-        // window.setInterval( function() {
-            // self.showResponse();
-        // }, 5000 );
 
     },
 
@@ -76,13 +69,24 @@ export default {
     methods: {
 
         showResponse: function() {
+
+            // Bind self to this
             var self = this;
 
+            // Show notifier
             this.$set( 'show', true );
 
-            var timeout = window.setTimeout( function() {
+            // Clear timout if the timer exists
+            if ( this.timer ) {
+                window.clearTimeout( this.timer );
+            }
+
+            // Create timer if it dont exist
+            this.$set( 'timer', window.setTimeout( function() {
                 self.$set( 'show', false );
-            }, this.displayTime*1000 );
+                self.$set( 'timer', null );
+            }, this.displayTime*1000 ) );
+
 
         },
 
@@ -92,13 +96,13 @@ export default {
 </script>
 
 <style lang="stylus">
-$brand-primary = darken( #428bca, 33.5% );
-$brand-info = #5bc0de;
-$brand-success = #5cb85c;
-$brand-warning = #f0ad4e;
-$brand-danger = #d9534f;
-$responder-width = 60%;
-$responder-padding = 6px 12px;
+$brand-primary := darken( #428bca, 33.5% );
+$brand-info := #5bc0de;
+$brand-success := #5cb85c;
+$brand-warning := #f0ad4e;
+$brand-danger := #d9534f;
+$responder-width := 60%;
+$responder-padding := 6px 12px;
 .Notifier
     width: $responder-width
     position:fixed

@@ -1,5 +1,8 @@
 <template>
 
+    <h1>Vue notification</h1>
+    <p>Click buttons below to check the funcitonality</p>
+
     <notifier></notifier>
 
     <button @click="notify">Notify!</button>
