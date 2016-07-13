@@ -16,7 +16,7 @@ export default {
 
     props: {
 
-        'display-time': {
+        'time': {
 
             type: Number,
             default: 4,
@@ -85,7 +85,7 @@ export default {
             this.$set( 'timer', window.setTimeout( function() {
                 self.$set( 'show', false );
                 self.$set( 'timer', null );
-            }, this.displayTime*1000 ) );
+            }, this.time*1000 ) );
 
 
         },
