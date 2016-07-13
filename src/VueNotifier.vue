@@ -1,19 +1,12 @@
 <template>
-<div v-if="show" transition="Responder" class="Responder"
+<div v-if="show" transition="Notifier" class="Notifier"
     :class="{
-        'Responder--primary': type == 'primary',
-        'Responder--info': type == 'info',
-        'Responder--success': type == 'success',
-        'Responder--warning': type == 'warning',
-        'Responder--danger': type == 'danger',
-    }">
-    <i class="fa" :class="{
-        'fa-check' : type == 'primary',
-        'fa-check' : type == 'success',
-        'fa-info-circle' : type == 'info',
-        'fa-exclamation-triangle' : type == 'warning',
-        'fa-warning' : type == 'danger'
-        }"></i> {{ message }}
+        'Notifier--primary': type == 'primary',
+        'Notifier--info': type == 'info',
+        'Notifier--success': type == 'success',
+        'Notifier--warning': type == 'warning',
+        'Notifier--danger': type == 'danger',
+    }"> {{ message }}
 </div>
 <slot></slot>
 </template>
@@ -66,16 +59,13 @@ export default {
         'Notifier::notify': function( message, type ) {
 
             // Set the type
-            type = type ? type : 'primary';
+            type = type ? type : 'success';
 
             // Clean message
-            console.log( typeof message );
             message = typeof message == 'string' ? message : this.defaultMessages[ type ];
 
-            console.log('responder::'+ type + ' Message: ' + message);
-
             this.$set( 'message', message );
-            this.$set( 'type', 'danger' );
+            this.$set( 'type', type );
 
             this.showResponse();
 
@@ -102,9 +92,14 @@ export default {
 </script>
 
 <style lang="stylus">
+$brand-primary = darken( #428bca, 33.5% );
+$brand-info = #5bc0de;
+$brand-success = #5cb85c;
+$brand-warning = #f0ad4e;
+$brand-danger = #d9534f;
 $responder-width = 60%;
 $responder-padding = 6px 12px;
-.Responder
+.Notifier
     width: $responder-width
     position:fixed
     z-index: 999999
@@ -115,15 +110,15 @@ $responder-padding = 6px 12px;
     margin-left: -( $responder-width /2 )
     left: 50%
 
-    &__primary
+    &--primary
         background-color: $brand-primary
-    &__info
+    &--info
         background-color: $brand-info
-    &__success
+    &--success
         background-color: $brand-success
-    &__warning
+    &--warning
         background-color: $brand-warning
-    &__danger
+    &--danger
         background-color: $brand-danger
 
     &-transition

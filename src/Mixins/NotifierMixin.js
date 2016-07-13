@@ -10,7 +10,7 @@ export default {
          * Primary
          */
         notifyPrimary( message ) {
-            this.notify( message );
+            this.notify( message, 'primary' );
         },
 
         /*
